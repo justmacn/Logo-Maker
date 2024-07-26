@@ -16,6 +16,7 @@ function init() {
             type: "input",
             message: questions[0],
             name: "text",
+            validate: (input) => input.length === 3
         },
         {
             type: "input",
