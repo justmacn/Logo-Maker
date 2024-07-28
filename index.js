@@ -1,5 +1,6 @@
 // require modules
 const inquirer = require('inquirer');
+const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 // an array of prompt questions
 const questions = [
@@ -48,11 +49,19 @@ function init() {
     ])
         .then((answers) => console.log(answers));
 
+        
+        // TODO: convert inputs to proper format
         // this.text = toUpperCase(text)
         // this.textcolor = removeWhiteSpace(tolowerCase(textcolor))
         // this.shape = tolowerCase(shape)
         // this.shapeColor = removeWhiteSpace(tolowerCase(shapeColor))
-};
+        // function to ensure color inputs are one word
+            // function removeWhiteSpace(str) {
+            //     return str.replace(/\s/g, '');
+            // }
+
+        // TODO: pass in inquirer values to a switch to generate logo file
+    };
 
 // call initialize function
 init();
