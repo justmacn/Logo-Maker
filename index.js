@@ -3,20 +3,27 @@ const inquirer = require('inquirer');
 
 // an array of prompt questions
 const questions = [
-    'Enter 3 characters for your logo text:',
-    'Enter a text color:',
-    'Select your logo shape:',
-    'Enter a shape color:'
+    'Enter up to 3 characters for your logo text:',
+    'Enter a color keyword or #hex code for your text color:',
+    'Select a shape for your logo:',
+    'Enter a color keyowrd or #hex code for your shape color:'
 ]
 
 // function to run on initialize
 function init() {
+    // this method will prompt the user for answers to help generate their logo
     inquirer.prompt([
         {
             type: "input",
             message: questions[0],
             name: "text",
-            validate: (input) => input.length === 3
+            validate: (input) => {
+                if (input.length > 3) {
+                    return 'Only enter up to 3 characters'
+                } else {
+                    return true
+                }
+            }
         },
         {
             type: "input",
