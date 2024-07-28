@@ -1,6 +1,7 @@
 // require modules
 const inquirer = require('inquirer');
-const { Circle, Square, Triangle } = require('./lib/shapes.js')
+const { Circle, Square, Triangle } = require('./lib/shapes.js');
+const colors = require('colors/safe');
 
 // an array of prompt questions
 const questions = [
@@ -16,24 +17,23 @@ function init() {
     inquirer.prompt([
         {
             type: "input",
-            message: questions[0],
+            message: colors.magenta(questions[0]),
             name: "text",
             validate: (input) => {
                 if (input.length > 3) {
                     return 'Only enter up to 3 characters'
                 } else {
                     return true
-                }
-            }
+                }}
         },
         {
             type: "input",
-            message: questions[1],
+            message: colors.magenta(questions[1]),
             name: "textColor",
         },
         {
             type: "list",
-            message: questions[2],
+            message: colors.magenta(questions[2]),
             name: "shape",
             choices: [
                 "Circle",
@@ -43,12 +43,12 @@ function init() {
         },
         {
             type: "input",
-            message: questions[3],
+            message: colors.magenta(questions[3]),
             name: "shapeColor",
         }
     ]).then((answers) => {
             // convert user inputs to proper format for class construction
-            let text = answers.text.toUpperCase()
+            let text = answers.text
             let textcolor = removeWhiteSpace(answers.textColor.toLowerCase())
             let shape = answers.shape.toLowerCase()
             let shapeColor = removeWhiteSpace(answers.shapeColor.toLowerCase())
@@ -62,12 +62,12 @@ function init() {
                 case 'triangle':
                     return logo = new Triangle(text, textcolor, shape, shapeColor);
             }
-        }).then((logo) => console.log(logo)
-        //     {
-        //     logo.generate()
-        //     logo.printConsole
-        // }
-    );
+        }).then((logo) => {
+            svgData = logo.render()
+            // console.log(svgData);
+            logo.generate(svgData)
+            logo.printConsole()
+        });
 };
 
 // function to ensure color inputs are one word
