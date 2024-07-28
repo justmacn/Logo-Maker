@@ -1,6 +1,6 @@
 // require modules
 const inquirer = require('inquirer');
-const {Circle, Square, Triangle} = require('./lib/shapes.js')
+const { Circle, Square, Triangle } = require('./lib/shapes.js')
 
 // an array of prompt questions
 const questions = [
@@ -37,8 +37,8 @@ function init() {
             name: "shape",
             choices: [
                 "Circle",
-                "Triangle",
                 "Square",
+                "Triangle",
             ]
         },
         {
@@ -46,22 +46,34 @@ function init() {
             message: questions[3],
             name: "shapeColor",
         }
-    ])
-        .then((answers) => console.log(answers));
+    ]).then((answers) => {
+            // convert user inputs to proper format for class construction
+            let text = answers.text.toUpperCase()
+            let textcolor = removeWhiteSpace(answers.textColor.toLowerCase())
+            let shape = answers.shape.toLowerCase()
+            let shapeColor = removeWhiteSpace(answers.shapeColor.toLowerCase())
 
-        
-        // TODO: convert inputs to proper format
-        // this.text = toUpperCase(text)
-        // this.textcolor = removeWhiteSpace(tolowerCase(textcolor))
-        // this.shape = tolowerCase(shape)
-        // this.shapeColor = removeWhiteSpace(tolowerCase(shapeColor))
-        // function to ensure color inputs are one word
-            // function removeWhiteSpace(str) {
-            //     return str.replace(/\s/g, '');
-            // }
+            // switch statement to construct class based on logo
+            switch (shape) {
+                case 'circle':
+                    return logo = new Circle(text, textcolor, shape, shapeColor);
+                case 'square':
+                    return logo = new Square(text, textcolor, shape, shapeColor);
+                case 'triangle':
+                    return logo = new Triangle(text, textcolor, shape, shapeColor);
+            }
+        }).then((logo) => console.log(logo)
+        //     {
+        //     logo.generate()
+        //     logo.printConsole
+        // }
+    );
+};
 
-        // TODO: pass in inquirer values to a switch to generate logo file
-    };
+// function to ensure color inputs are one word
+function removeWhiteSpace(str) {
+    return str.replace(/\s/g, '');
+}
 
 // call initialize function
 init();
