@@ -47,6 +47,11 @@ function init() {
         }
     ])
         .then((answers) => console.log(answers));
+
+        // this.text = toUpperCase(text)
+        // this.textcolor = removeWhiteSpace(tolowerCase(textcolor))
+        // this.shape = tolowerCase(shape)
+        // this.shapeColor = removeWhiteSpace(tolowerCase(shapeColor))
 };
 
 // call initialize function
