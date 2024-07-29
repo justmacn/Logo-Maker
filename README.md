@@ -12,8 +12,6 @@ Each question allows the user to select their logo text, text color, logo shape,
 
 - [Usage](#usage)
 
-- [Contributing](#contributing)
-
 - [Tests](#tests)
 
 - [Questions](#questions)
@@ -29,20 +27,16 @@ This application uses the following node.js dependencies:
 
 This project can be used to generate quick and easy logos in an svg format. Its current usability is coded to generate either a Circle, Square, or Triangle shaped-logo, but future development can incorporate further shapes.
 
-_ _ 
-
 ![A node.js app asking users questions to generate an svg logo](./lib/images/logo-maker_demo.gif)
-
-**Logo generator demo*
-
-## Contributing
-
-N/A
+<div style="text-align: center; font-style: italic;">Logo generator demo</div>
 
 ## Tests
 
 The jest npm module was used to test the application.
 - Use command:  ***npm test*** 
+
+![A node.js test to check class construction](./lib/images/logo-maker_tests.gif) 
+<div style="text-align: center; font-style: italic;">Jest tests</div>
 
 ## Questions
 
