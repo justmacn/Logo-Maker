@@ -53,7 +53,7 @@ function init() {
             let shape = answers.shape.toLowerCase()
             let shapeColor = removeWhiteSpace(answers.shapeColor.toLowerCase())
 
-            // switch statement to construct class based on logo
+            // switch statement to construct class based on shape input
             switch (shape) {
                 case 'circle':
                     return logo = new Circle(text, textcolor, shape, shapeColor);
@@ -63,9 +63,11 @@ function init() {
                     return logo = new Triangle(text, textcolor, shape, shapeColor);
             }
         }).then((logo) => {
+            // call the render prototype function to return svg element
             svgData = logo.render()
-            // console.log(svgData);
+            // generate the logo and write to svg file
             logo.generate(svgData)
+            // log a success message
             logo.printConsole()
         });
 };
