@@ -5,10 +5,10 @@ const colors = require('colors/safe');
 
 // an array of prompt questions
 const questions = [
-    'Enter up to 3 characters for your logo text:',
-    'Enter a color keyword or #hex code for your text color:',
+    'Enter 3 characters for your logo text:',
+    'Enter a text color (keyword or #hex):',
     'Select a shape for your logo:',
-    'Enter a color keyowrd or #hex code for your shape color:'
+    'Enter a shape color (keyword or #hex):'
 ]
 
 // function to run on initialize
@@ -49,9 +49,9 @@ function init() {
     ]).then((answers) => {
             // convert user inputs to proper format for class construction
             let text = answers.text
-            let textcolor = removeWhiteSpace(answers.textColor.toLowerCase())
-            let shape = answers.shape.toLowerCase()
-            let shapeColor = removeWhiteSpace(answers.shapeColor.toLowerCase())
+            let textcolor = removeWhiteSpace(answers.textColor.toLowerCase().trim())
+            let shape = answers.shape.toLowerCase().trim()
+            let shapeColor = removeWhiteSpace(answers.shapeColor.toLowerCase().trim())
 
             // switch statement to construct class based on shape input
             switch (shape) {
@@ -69,6 +69,9 @@ function init() {
             logo.generate(svgData)
             // log a success message
             logo.printConsole()
+        }).catch((error) => {
+            console.log(colors.red(error));
+            console.log(colors.pink('Oops! Something went wrong'))
         });
 };
 
